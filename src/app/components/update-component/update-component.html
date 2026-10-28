@@ -1,1 +1,19 @@
-<p>update-component works!</p>
+<h1 style="color: blue;">Edit departamento</h1>
+
+<form createform="ngform">
+    <label>Id departamento: </label>
+    <input type="number" name="cajaid" #cajaid class="form-control"
+    value="{{departamento.numero}}" disabled/>
+
+    <label>Nombre: </label>
+    <input type="text" name="cajanombre" #cajanombre class="form-control"
+    value="{{departamento.nombre}}"/>
+
+    <label>Localidad: </label>
+    <input type="text" name="cajalocalidad" #cajalocalidad class="form-control"
+    value="{{departamento.localidad}}"/>
+
+    <button (click)="updateDepartamento()" class="btn btn-info">
+        Update
+    </button>
+</form>
