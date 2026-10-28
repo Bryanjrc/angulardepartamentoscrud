@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
 import { ServiceDepartamentos } from '../../services/service.departamentos';
 import { Departamento } from '../../models/departamento';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-component',
@@ -17,7 +18,8 @@ export class CreateComponent {
 
   constructor(
     private _service: ServiceDepartamentos,
-    private _cder: ChangeDetectorRef
+    private _cder: ChangeDetectorRef,
+    private _router: Router
   ) {}
 
   async insertDepartamento(): Promise<void> {
@@ -29,6 +31,7 @@ export class CreateComponent {
 
     this.mensaje = "Departamento insertado correctamente";
     this._cder.detectChanges();
+    this._router.navigate(["/"]);
   }
-  
+
 }

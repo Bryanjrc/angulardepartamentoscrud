@@ -4,6 +4,7 @@
             <th>Id departamento</th>
             <th>Nombre</th>
             <th>Localidad</th>
+            <td></td>
         </tr>
     </thead>
     <tbody>
@@ -12,6 +13,18 @@
                 <td>{{dept.numero}}</td>
                 <td>{{dept.nombre}}</td>
                 <td>{{dept.localidad}}</td>
+                <td>
+                    <a [routerLink]="['/details/' + dept.numero + '/' 
+                        + dept.nombre 
+                        + '/' + dept.localidad]" class="btn btn-info">
+                        Details
+                    </a>
+
+                    <a [routerLink]="['update/'
+                    + dept.numero]" class="btn btn-info">
+                        Edit
+                    </a>
+                </td>
             </tr>
         }
     </tbody>
