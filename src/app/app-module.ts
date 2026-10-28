@@ -10,6 +10,7 @@ import { ServiceDepartamentos } from './services/service.departamentos';
 import { CreateComponent } from './components/create-component/create-component';
 import { DetailsComponent } from './components/details-component/details-component';
 import { UpdateComponent } from './components/update-component/update-component';
+import { DeleteComponent } from './components/delete-component/delete-component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { UpdateComponent } from './components/update-component/update-component'
     CreateComponent,
     DetailsComponent,
     UpdateComponent,
+    DeleteComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideHttpClient(), ServiceDepartamentos, provideBrowserGlobalErrorListeners()],
