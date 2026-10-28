@@ -1,11 +1,10 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { environment } from "../../environments/environment.development";
 import { Departamento } from "../models/departamento";
-import { first, firstValueFrom } from "rxjs";
+import { environment } from "../../environments/environment.development";
+import { firstValueFrom } from "rxjs";
 
 @Injectable()
-
 export class ServiceDepartamentos {
     url = environment.apiDepartamentos;
 
@@ -13,9 +12,19 @@ export class ServiceDepartamentos {
 
     async getDepartamentosAsync(): Promise<Departamento[]> {
         let request = "api/departamentos";
+        return firstValueFrom(this._http.get<Departamento[]>(this.url + request));
+    }
 
+    async createDepartamento(departamento: Departamento): Promise<any> {
+        //convertimos el objeto recibido a json
+        let json = JSON.stringify(departamento);
+        //creamos un objeto header para el type
+        let header = new HttpHeaders();
+        //incluimos la key de content-type
+        header = header.set("content-type", "application/json");
+        let request = "api/departamentos";
         return firstValueFrom(
-            this._http.get<Departamento[]>(this.url + request)
+            this._http.post(this.url + request, json, {headers: header})
         );
     }
 }
